@@ -15,6 +15,8 @@ import { PintComponent } from './pint.component';
     <keg-display class="col-sm-4"
       (click)="kegClicked(currentKeg)"
       [class.selected]="currentKeg === selectedKeg"
+      [class.empty]="currentKeg.pints < 11"
+      [class.medium]="currentKeg.pints > 11 && currentKeg.pints < 60"
       [keg]="currentKeg">
     </keg-display>
     <pint-display class="col-sm-4 col-sm-offset-4"
