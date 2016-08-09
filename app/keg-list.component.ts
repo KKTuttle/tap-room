@@ -11,7 +11,7 @@ import { PintComponent } from './pint.component';
   outputs: ['onKegSelect'],
   directives: [KegComponent, EditKegDetailsComponent, NewKegComponent, PintComponent],
   template: `
-  <div *ngFor="#currentKeg of kegList"class="row">
+  <div *ngFor="#currentKeg of kegList">
     <keg-display class="col-sm-4"
       (click)="kegClicked(currentKeg)"
       [class.selected]="currentKeg === selectedKeg"
@@ -22,7 +22,9 @@ import { PintComponent } from './pint.component';
       [keg]="currentKeg">
     </pint-display>
   </div>
-  <edit-keg-details *ngIf="selectedKeg"[keg]="selectedKeg">
+  <edit-keg-details
+    *ngIf="selectedKeg"
+    [keg]="selectedKeg">
   </edit-keg-details>
   <new-keg (onSubmitNewKeg)="createKeg($event.name, $event.brand, $event.price, $event.alcoholContent)"></new-keg>
   `

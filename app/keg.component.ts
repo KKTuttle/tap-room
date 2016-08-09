@@ -1,5 +1,4 @@
 import { Component } from 'angular2/core';
-// import { PintComponent } from './pint.component';
 import { Keg } from './keg.model';
 
 @Component({
@@ -7,6 +6,7 @@ import { Keg } from './keg.model';
     inputs: ['keg'],
   template:`
   <h3>{{ keg.name }}</h3>
+  $ {{ (keg.price/40).toFixed(2) }}
   `
 })
 
