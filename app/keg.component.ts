@@ -1,4 +1,5 @@
 import { Component } from 'angular2/core';
+// import { PintComponent } from './pint.component';
 import { Keg } from './keg.model';
 
 @Component({
