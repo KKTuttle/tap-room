@@ -11,15 +11,16 @@ import { PintComponent } from './pint.component';
   outputs: ['onKegSelect'],
   directives: [KegComponent, EditKegDetailsComponent, NewKegComponent, PintComponent],
   template: `
-  <div *ngFor="#currentKeg of kegList">
-    <keg-display class="col-sm-4"
+  <div class="display" *ngFor="#currentKeg of kegList">
+    <keg-display
       (click)="kegClicked(currentKeg)"
       [class.selected]="currentKeg === selectedKeg"
       [class.empty]="currentKeg.pints < 11"
       [class.medium]="currentKeg.pints > 11 && currentKeg.pints < 60"
+      [class.cheap]="currentKeg.price < 100"
       [keg]="currentKeg">
     </keg-display>
-    <pint-display class="col-sm-4 col-sm-offset-4"
+    <pint-display
       (click)="decreasePints(currentKeg)"
       [keg]="currentKeg">
     </pint-display>

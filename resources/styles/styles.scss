@@ -1,10 +1,12 @@
-
 .keg-form {
   margin-top: 50px;
   margin-bottom: 80px;
   color: hotpink;
 }
 
+.display {
+  max-width: 40%;
+}
 pint-display {
   img {
     height: 40px;
@@ -18,6 +20,12 @@ pint-display {
 
 .medium {
   color: green;
+}
+
+.cheap {
+  h3 {
+    background: yellow;
+  }
 }
 
 .selected {
