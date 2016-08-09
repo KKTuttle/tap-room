@@ -1,13 +1,18 @@
 import { Component } from 'angular2/core';
+import { KegListComponent } from './keg-list.component';
 // import { KegComponent } from './keg.component'
 import { Keg } from './keg.model';
 
 @Component({
   selector: 'my-app',
+  directives: [KegListComponent],
   template: `
   <div class="container">
     <h1>Keg List</h1>
-    <h3 *ngFor="#keg of kegs" (click)="kegWasSelected(keg)">{{ keg.name }}</h3>
+    <keg-list
+      [kegList]="kegs"
+      (onKegSelect)="kegWasSelected($event)">
+    </keg-list>
   </div>
   `
 })
