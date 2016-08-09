@@ -2,13 +2,13 @@ import { Component, EventEmitter } from 'angular2/core';
 import { KegComponent } from './keg.component';
 import { Keg } from './keg.model';
 import { EditKegDetailsComponent} from './edit-keg-details.component';
-// import { NewKegComponent } from './new-keg.component';
+import { NewKegComponent } from './new-keg.component';
 //
 @Component({
   selector: 'keg-list',
   inputs: ['kegList'],
   outputs: ['onKegSelect'],
-  directives: [KegComponent, EditKegDetailsComponent],
+  directives: [KegComponent, EditKegDetailsComponent, NewKegComponent],
   template: `
   <keg-display *ngFor="#currentKeg of kegList"
     (click)="kegClicked(currentKeg)"
@@ -17,6 +17,7 @@ import { EditKegDetailsComponent} from './edit-keg-details.component';
   </keg-display>
   <edit-keg-details *ngIf="selectedKeg"[keg]="selectedKeg">
   </edit-keg-details>
+  <new-keg (onSubmitNewKeg)="createKeg($event.name, $event.brand, $event.price, $event.alcoholContent)"></new-keg>
   `
 })
 export class KegListComponent {
@@ -30,5 +31,10 @@ export class KegListComponent {
     console.log('child', clickedKeg);
     this.selectedKeg = clickedKeg;
     this.onKegSelect.emit(clickedKeg);
+  }
+  createKeg(name: string, brand: string, price: number, alcoholContent: number): void {
+    this.kegList.push(
+      new Keg(name, brand, price, alcoholContent, this.kegList.length)
+    );
   }
 }
